@@ -1,0 +1,43 @@
+x-restart-policy: &restart_policy
+  restart: unless-stopped
+services:
+  postgres:
+    <<: *restart_policy
+    env_file:
+      - .env
+    image: postgres:18.1
+    ports:
+      - "5432:5432"
+    volumes:
+      - "dispatch-postgres:/var/lib/postgresql"
+    networks:
+      - spm
+  web:
+    <<: *restart_policy
+    image: spmweb
+    build: 
+      context: .
+    depends_on:
+      - postgres
+    env_file:
+      - .env
+    ports:
+      - "8000:8000"
+    networks:
+      - spm
+  pgadmin:
+    <<: *restart_policy
+    image: dpage/pgadmin4
+    ports:
+      - "9000:80"
+    env_file:
+      - .env
+    networks:
+      - spm
+
+volumes:
+  dispatch-postgres:
+    external: false
+
+networks:
+  spm:
