@@ -1,6 +1,6 @@
 from .models import (
-    TestResponse
+    HelloResonse
 )
 
 def get_response():
-    return TestResponse(hello="world")
+    return HelloResonse(hello="world")

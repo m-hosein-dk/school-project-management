@@ -1,12 +1,12 @@
-from fastapi import APIRouter, Request
+from fastapi import APIRouter
 from .models import (
-    TestResponse
+    HelloResonse
 )
 from .service import get_response
 
 router = APIRouter()
 
-@router.get("", response_model=TestResponse)
-def hello_worlds(request:Request):
+@router.get("", response_model=HelloResonse)
+def hello_worlds():
     """Get all team contacts."""
     return get_response()

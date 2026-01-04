@@ -1,5 +1,5 @@
 from pydantic import BaseModel
 
 # pydantic models...
-class TestResponse(BaseModel):
+class HelloResonse(BaseModel):
     hello:str

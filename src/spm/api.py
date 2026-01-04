@@ -1,6 +1,6 @@
 from fastapi import APIRouter
 from spm.hello_world.view import router as hello_world_router
-from spm.units.view import router as units_router
+from spm.units.views import router as units_router
 
 api_router = APIRouter()
 

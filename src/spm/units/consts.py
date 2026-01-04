@@ -1,6 +1,7 @@
 from enum import Enum
 
 class UNIT(Enum):
+	SYSTEM_ADMINISTRATOR = "system_administrator" # واحد فناوری اطلاعات ( مدیرسیستم)			
 	SURVEYING = "surveying" # نقشه کشی
 	CONTRACTS = "contracts" # امور قراردادها و اعتبارات
 	TECHNICAl_ASSISSTANT = "technical_assisstant" # معاونت فنی
@@ -13,6 +14,11 @@ class UNIT(Enum):
 	FINANCIAL_PERFORMANCE = "financial_performance" # گزارش عمکرد مالی
 
 language_mapping = {
+	UNIT.SYSTEM_ADMINISTRATOR: {
+		"en": "System Administrator",
+		"fa": "واحد فناوری اطلاعات ( مدیرسیستم)"
+	},
+
 	UNIT.SURVEYING: {
 		"en": "Surveying",
 		"fa": "نقشه کشی"
