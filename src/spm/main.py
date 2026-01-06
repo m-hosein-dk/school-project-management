@@ -4,7 +4,7 @@ import logging
 from uuid import uuid1
 from sqlalchemy.orm import sessionmaker, scoped_session
 from fastapi import FastAPI, Request
-from . import database
+from .database import core
 from .api import api_router
 
 log = logging.getLogger(__name__)
@@ -12,6 +12,9 @@ log = logging.getLogger(__name__)
 app = FastAPI()
 
 api = FastAPI()
+
+# create all database tables
+core.create_all()
 
 REQUEST_ID_CTX_KEY: Final[str] = "request_id"
 _request_id_ctx_var: ContextVar[str | None] = ContextVar(REQUEST_ID_CTX_KEY, default=None)
@@ -29,7 +32,7 @@ async def db_session_middleware(request: Request, call_next):
     session = None
 
     try:
-        session = scoped_session(sessionmaker(bind=database.engine), scopefunc=get_request_id)
+        session = scoped_session(sessionmaker(bind=core.engine), scopefunc=get_request_id)
         request.state.db = session()
 
         response = await call_next(request)
