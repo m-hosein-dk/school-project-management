@@ -17,7 +17,7 @@ UnitName = Annotated[UNIT, Path()]
     response_model=list[AllUnitsResponse],
 )
 def get_all_units():
-    """Get all team contacts."""
+    """Get all units."""
     return units_service.get_all_units()
 
 @router.get(
