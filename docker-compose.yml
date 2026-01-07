@@ -9,7 +9,7 @@ services:
     ports:
       - "5432:5432"
     volumes:
-      - "dispatch-postgres:/var/lib/postgresql"
+      - "spm-postgres:/var/lib/postgresql"
     networks:
       - spm
   web:
@@ -36,7 +36,7 @@ services:
       - spm
 
 volumes:
-  dispatch-postgres:
+  spm-postgres:
     external: false
 
 networks:
