@@ -9,9 +9,6 @@ from .model import (
     SearchPaginationInputs
 )
 
-if not config.DATABASE_URL:
-    raise ValueError('"DATABASE_URL" needs to be set as an environment variable')
-
 engine = create_engine(
     config.DATABASE_URL,
 )
