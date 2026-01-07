@@ -7,7 +7,7 @@ def env(name:str, default:str | None = None):
         env = os.environ.get(name)
 
         if not env:
-            raise ValueError('"DATABASE_URL" needs to be set as an environment variable')
+            raise ValueError(f'"{name}" needs to be set as an environment variable')
         
         return env
 
@@ -19,3 +19,5 @@ JWT_ALGORITHM = env("JWT_ALGORITHM", "HS256")
 
 DEFAULT_USERNAME = env("DEFAULT_USERNAME")
 DEFAULT_PASSWORD = env("DEFAULT_PASSWORD")
+DEFAULT_MOBILE = env("DEFAULT_MOBILE")
+DEFAULT_FULLNAME = env("DEFAULT_FULLNAME")
