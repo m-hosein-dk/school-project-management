@@ -1,6 +1,8 @@
+from datetime import datetime
+from sqlalchemy.orm import Session
 from .models import (
-    HelloResonse
+    HelloResponse
 )
 
 def get_response():
-    return HelloResonse(hello="world")
+    return HelloResponse(hello="world")
