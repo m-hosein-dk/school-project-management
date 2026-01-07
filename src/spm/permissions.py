@@ -18,7 +18,7 @@ class PermissionsDependency:
 		self.permissions = permissions
 
 	def __call__(self, request:Request) -> Any:
-		check_result = any([
+		check_result = all([
 			p().check(request)
 			for p in self.permissions
 		])
