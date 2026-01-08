@@ -2,12 +2,17 @@ from contextvars import ContextVar
 from typing import Final
 import logging
 from uuid import uuid1
-from sqlalchemy.orm import sessionmaker, scoped_session
+from sqlalchemy.orm import sessionmaker, scoped_session, create_session
 from fastapi import FastAPI, Request
 from .database import core
 from .api import api_router
+from spm.config import (
+    DEFAULT_USERNAME
+)
+from spm.users import service as users_service
 
 log = logging.getLogger(__name__)
+logging.basicConfig(level=logging.INFO)
 
 app = FastAPI()
 
@@ -15,6 +20,18 @@ api = FastAPI()
 
 # create all database tables
 core.create_all()
+
+
+# create default user
+temp_session = create_session(core.engine)
+users_service.create_default_user(temp_session)
+temp_session.commit()
+temp_session.close()
+
+# @api.middleware("http")
+# async def GRANT_ALL_MIDDLEWARE(request: Request, call_next):
+#     request.state.user = users_service.get_user_by_username(DEFAULT_USERNAME, request.state.db) 
+#     return await call_next(request)
 
 REQUEST_ID_CTX_KEY: Final[str] = "request_id"
 _request_id_ctx_var: ContextVar[str | None] = ContextVar(REQUEST_ID_CTX_KEY, default=None)

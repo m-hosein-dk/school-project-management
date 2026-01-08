@@ -60,7 +60,7 @@ def cast_value(column, value: str):
             return value
 
     except ValueError:
-        return value  # fallback امن
+        return value
 
     return value
 
