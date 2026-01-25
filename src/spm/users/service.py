@@ -80,6 +80,11 @@ def get_current_user(request:Request) -> User | None:
                 status.HTTP_409_CONFLICT,
                 "current user doesnt have a password. current user needs to set a password"
             )
+    else:
+        raise HTTPException(
+            status.HTTP_401_UNAUTHORIZED,
+            "Unathorized"
+        )
     return user
 
 CurrentUser = Annotated[User, Depends(get_current_user)]
