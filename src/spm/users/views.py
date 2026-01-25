@@ -67,6 +67,7 @@ def view_users_paginiaion(input: SearchPaginationParameters, session:DbSession):
                 "username": it.username,
                 "fullname": it.fullname,
                 "mobile": it.mobile,
+                "unit": it.unit
             }
             for it in items
         ],

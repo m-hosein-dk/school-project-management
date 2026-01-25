@@ -4,7 +4,7 @@ from spm.units.consts import (
     UNIT
 )
 from .models import (
-    AllUnitsResponse
+    UnitResponse
 )
 from spm.units import service as units_service
 
@@ -14,7 +14,7 @@ UnitName = Annotated[UNIT, Path()]
 
 @router.get(
     "", 
-    response_model=list[AllUnitsResponse],
+    response_model=list[UnitResponse],
 )
 def get_all_units():
     """Get all units."""
@@ -22,7 +22,7 @@ def get_all_units():
 
 @router.get(
     "/{unit_name}", 
-    response_model=AllUnitsResponse
+    response_model=UnitResponse
 )
 def get_unit(unit_name: UnitName):
     """Get unit by name."""

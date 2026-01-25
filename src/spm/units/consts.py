@@ -2,7 +2,7 @@ from enum import Enum
 
 class UNIT(Enum):
 	SYSTEM_ADMINISTRATOR = "system_administrator" # واحد فناوری اطلاعات ( مدیرسیستم)	
-	GENERAL_MANAGER = "general_manager" # مدیر سیستم
+	GENERAL_MANAGER = "general_manager" # مدیر کل
 	SURVEYING = "surveying" # نقشه کشی
 	CONTRACTS = "contracts" # امور قراردادها و اعتبارات
 	TECHNICAl_ASSISSTANT = "technical_assisstant" # معاونت فنی

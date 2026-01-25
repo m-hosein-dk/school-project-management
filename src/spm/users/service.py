@@ -1,6 +1,6 @@
 from typing import Annotated
 import logging
-from fastapi import Request
+from fastapi import Request, Depends
 from fastapi.exceptions import HTTPException
 from fastapi import status
 from sqlalchemy.orm import Session
@@ -82,4 +82,4 @@ def get_current_user(request:Request) -> User | None:
             )
     return user
 
-CurrentUser = Annotated[User, get_current_user]
+CurrentUser = Annotated[User, Depends(get_current_user)]

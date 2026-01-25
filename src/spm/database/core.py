@@ -23,8 +23,8 @@ def create_all():
 
 
 def search_pagination_parameters(
-    page:Annotated[int, FastApiQuery(gt=0, lt=2147483647)],
-    page_size:Annotated[int, FastApiQuery(gt=0, lt=2147483647)],
+    page:Annotated[int, FastApiQuery(gt=0, lt=2147483647)] = 1,
+    page_size:Annotated[int, FastApiQuery(gt=0, lt=2147483647)] = 10,
     q:Annotated[str, FastApiQuery(description="filter result using FIQL")] = "",
     sortby:Annotated[str, FastApiQuery()] = "id",
     order:Annotated[Literal["asc", "desc"], FastApiQuery()] = "asc",

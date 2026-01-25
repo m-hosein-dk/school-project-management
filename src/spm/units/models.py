@@ -6,6 +6,6 @@ class UnitIn(BaseModel):
     name: UNIT
     language: str | None = None
 
-class AllUnitsResponse(BaseModel):
+class UnitResponse(BaseModel):
     name: UNIT
     language_mapping: dict[str, str]
