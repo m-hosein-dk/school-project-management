@@ -5,6 +5,6 @@ WORKDIR /spm
 COPY requirements.txt .
 RUN pip install -r requirements.txt
 
-EXPOSE 80
+EXPOSE 18000
 COPY . .
-CMD ["fastapi", "run", "./src/spm/main.py", "--port", "8000"]
+CMD ["fastapi", "run", "./src/spm/main.py", "--port", "18000"]
