@@ -3,20 +3,25 @@ from typing import Final
 import logging
 from uuid import uuid1
 from sqlalchemy.orm import sessionmaker, scoped_session, create_session
-from fastapi import FastAPI, Request
+from fastapi import FastAPI, Request, Depends
 from .database import core
 from .api import api_router
 from spm.config import (
     DEFAULT_USERNAME
 )
 from spm.users import service as users_service
+from spm.auth import service as auth_service
 
 log = logging.getLogger(__name__)
 logging.basicConfig(level=logging.INFO)
 
 app = FastAPI()
 
-api = FastAPI()
+api = FastAPI(
+    dependencies=[
+        Depends(auth_service.auth_dependency)
+    ]
+)
 
 # create all database tables
 core.create_all()
@@ -29,7 +34,7 @@ temp_session.commit()
 temp_session.close()
 
 # @api.middleware("http")
-# async def GRANT_ALL_MIDDLEWARE(request: Request, call_next):
+# async def GRANT_ALL_PERMISSIONS_MIDDLEWARE(request: Request, call_next):
 #     request.state.user = users_service.get_user_by_username(DEFAULT_USERNAME, request.state.db) 
 #     return await call_next(request)
 
