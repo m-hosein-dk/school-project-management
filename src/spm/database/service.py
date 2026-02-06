@@ -43,3 +43,9 @@ def search_pagination(
         current_page=params.page,
         page_size=params.page_size,
     ), items
+
+def get_class_by_tablename(tablename:str):
+    for mapper in Base.registry.mappers:
+        if mapper.class_.__tablename__ == tablename:
+            return mapper.class_
+    return None
