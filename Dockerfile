@@ -5,6 +5,9 @@ WORKDIR /spm
 COPY requirements.txt .
 RUN pip install -r requirements.txt
 
+# NOTE: change the path in .env if you changed this one
+RUN mkdir files
+
 EXPOSE 18000
 COPY . .
 CMD ["fastapi", "run", "./src/spm/main.py", "--port", "18000"]
