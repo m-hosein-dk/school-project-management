@@ -13,6 +13,8 @@ class UNIT(Enum):
 	FACILITIES_SUPERVISOR = "facilities_supervisor" # واحد سرناظر تاسیسات
 	FACILITY_MONITORING = "facility_monitoring" # واحد نظارت تاسیسات
 	FINANCIAL_PERFORMANCE = "financial_performance" # گزارش عمکرد مالی
+	GENERAL_RELATIONS = "general_relations" # واحد روابط عمومی
+	ACCOUNTING = "accounting" # واحد حسابداری
 
 language_mapping = {
 	UNIT.SYSTEM_ADMINISTRATOR: {
@@ -74,4 +76,14 @@ language_mapping = {
 		"en": "Financial Performance",
 		"fa": "گزارش عمکرد مالی"
 	},
+
+	UNIT.GENERAL_RELATIONS: {
+		"en": "general relations",
+		"fa": "واحد روابط عمومی"
+	},
+
+	UNIT.ACCOUNTING: {
+		"en": "accounting",
+		"fa": "حسابداری"
+	}
 }
